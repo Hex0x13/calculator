@@ -10,24 +10,44 @@ body {
 }
 
 .calculator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: grid;
-  grid-template-areas:
-  "display display display display"
-  "delete delete clear clear";
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: auto;
+  height: 500px;
+  width: 400px;
+  background-color: gray;
+  padding: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  gap: 10px;
 }
 
 .display {
   border: 1px solid black;
-  height: 40px;
-  grid-area: display;
+  height: 80px;
+  grid-column: 1/5;
+  padding: 10px;
+  text-align: right;
+  margin: 0;
+  background-color: aliceblue;
+  border-radius: 10px;
 }
 
-.calculator-buttons.delete {
-  grid-area: delete;
+.display div {
+  height: 50%;
 }
 
-.calculator-buttons.clear {
-  grid-area: clear;
+.display .top {
+  font-size: 16px;
 }
+
+.calculator-buttons {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0;
+}
+
