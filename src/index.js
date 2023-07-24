@@ -77,8 +77,8 @@ function inputOperator(event){
 function displayAnswer(){
   if (bottomDisplay.textContent === '' || topDisplay.textContent === '') 
     return;
-  topDisplay.textContent += currentNum;
   currentNum = operate(prevNum, currentNum, operator);
+  topDisplay.textContent = currentNum;
   bottomDisplay.textContent = currentNum;
 }
 
