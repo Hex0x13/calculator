@@ -1,0 +1,33 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+body {
+  padding: 10px;
+}
+
+.calculator {
+  display: grid;
+  grid-template-areas:
+  "display display display display"
+  "delete delete clear clear";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: auto;
+}
+
+.display {
+  border: 1px solid black;
+  height: 40px;
+  grid-area: display;
+}
+
+.calculator-buttons.delete {
+  grid-area: delete;
+}
+
+.calculator-buttons.clear {
+  grid-area: clear;
+}
