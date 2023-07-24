@@ -47,8 +47,8 @@ function backspace(){
 }
 
 function toPercentage(){
+  if (bottomDisplay.textContent === '') return;
   currentNum /= 100;
-  console.log(currentNum)
   bottomDisplay.textContent = currentNum;
 }
 
