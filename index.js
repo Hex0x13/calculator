@@ -25,6 +25,10 @@ buttons.forEach(button => {
 });
 
 function inputNumber(event){
+  if (bottomDisplay.textContent === '' && topDisplay.textContent !== '' &&
+  !topDisplay.textContent.charAt(topDisplay.textContent.length - 1).match(/[÷×−+]/g)) {
+    return;
+  }
   const text = event.target.textContent;
   bottomDisplay.textContent += text;
   currentNum = +bottomDisplay.textContent;
@@ -38,11 +42,19 @@ function clearDisplay(){
 }
 
 function backspace(){
-  const text = bottomDisplay.textContent.slice(0, -1);
-  if (text.length === 1 && text === '-'){
-    bottomDisplay.textContent = '';
+  if (topDisplay.textContent
+    .charAt(topDisplay.textContent.length - 1).match(/[÷×−+]/g) &&
+    bottomDisplay.textContent === '') {
+    const text2 = topDisplay.textContent.slice(0, -1);
+    topDisplay.textContent = '';
+    bottomDisplay.textContent = text2;
   } else {
-    bottomDisplay.textContent = text;
+    const text = bottomDisplay.textContent.slice(0, -1);
+    if (text.length === 1 && text === '-') {
+      bottomDisplay.textContent = '';
+    } else {
+      bottomDisplay.textContent = text;
+    }
   }
 }
 
@@ -75,7 +87,10 @@ function inputOperator(event){
 }
 
 function displayAnswer(){
-  if (bottomDisplay.textContent === '' || topDisplay.textContent === '') 
+  if (bottomDisplay.textContent === '' || 
+      topDisplay.textContent === '' ||
+    !topDisplay.textContent
+    .charAt(topDisplay.textContent.length - 1).match(/[÷×−+]/g)) 
     return;
   currentNum = operate(prevNum, currentNum, operator);
   topDisplay.textContent = currentNum;
